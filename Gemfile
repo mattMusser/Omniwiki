@@ -24,6 +24,9 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Bootstrap Javascript depends on jQuery
 gem 'jquery-rails'
 
+# Use Devise for authentication
+gem 'devise'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
