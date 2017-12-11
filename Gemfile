@@ -24,6 +24,11 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Bootstrap Javascript depends on jQuery
 gem 'jquery-rails'
 
+#Used to access font-awesome fonts
+gem 'font-awesome-rails'
+# Used to format Rspec
+gem 'fuubar'
+
 # Use Devise for authentication
 gem 'devise'
 
@@ -43,7 +48,7 @@ gem 'jbuilder', '~> 2.5'
 
 group :production do
   #Use pg as the production database for Active Record
-  gem 'pg'
+  gem 'pg', '~> 0.20.0'
 end
 
 group :development do
@@ -59,3 +64,11 @@ end
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '3.6.1'
+  gem 'rails-controller-testing'
+  gem 'shoulda'
+  gem 'foreman'
+end
+
