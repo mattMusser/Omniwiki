@@ -62,12 +62,26 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'omnipedia.herokuapp.com' }
   Rails.application.routes.default_url_options[:host] = 'omnipedia.herokuapp.com'
 
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+  #config.action_mailer.smtp_settings = {
+    #address: "smtp.gmail.com",
+    #port: 587,
+    #authentication: "plain",
+    #enable_starttls_auto: true,
+    #user_name: ENV["GMAIL_USERNAME"],
+    #password: ENV["GMAIL_PASSWORD"]
   }
+
+  require 'tlsmail'
+  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+    ActionMailer::Base.delivery_method = :smtp
+     config.action_mailer.perform_deliveries = true
+     config.action_mailer.default :charset => "utf-8"
+       ActionMailer::Base.smtp_settings = {
+       :address              => "smtp.gmail.com",
+       :port                 => 587,
+       :user_name            => ENV["GMAIL_USERNAME"],
+       :password             => ENV['GMAIL_PASSWORD'],
+       :authentication       => "plain",
+       :enable_starttls_auto => true
+       }
 end
