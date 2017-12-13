@@ -100,11 +100,11 @@ Rails.application.configure do
   Rails.application.routes.default_url_options[:host] = 'omnipedia.herokuapp.com'
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.mailgun.com",
     port: 587,
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: ENV["MAILGUN_USERNAME"],
+    password: ENV["MAILGUN_PASSWORD"]
   }
 end

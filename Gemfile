@@ -33,6 +33,11 @@ gem 'fuubar'
 # Use Devise for authentication
 gem 'devise'
 
+gem 'tlsmail'
+
+# Use mail gun to send emails
+gem 'mailgun_rails'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
