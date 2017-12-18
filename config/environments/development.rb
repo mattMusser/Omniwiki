@@ -53,14 +53,15 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Default url configuration for Devise
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
+  config.action_mailer.default_url_options = { :host => 'localhost', :port => 3000}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 
-  config.action_mailer.default_url_options = { :host => 'omnipedia.herokuapp.com' }
-  Rails.application.routes.default_url_options[:host] = 'omnipedia.herokuapp.com'
+  #config.action_mailer.default_url_options = { :host => 'omnipedia.herokuapp.com' }
+  #Rails.application.routes.default_url_options[:host] = 'omnipedia.herokuapp.com'
 
   #config.action_mailer.smtp_settings = {
     #address: "smtp.gmail.com",
@@ -71,17 +72,17 @@ Rails.application.configure do
     #password: ENV["GMAIL_PASSWORD"]
   #}
 
-  require 'tlsmail'
-  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
-    ActionMailer::Base.delivery_method = :smtp
-     config.action_mailer.perform_deliveries = true
-     config.action_mailer.default :charset => "utf-8"
-       ActionMailer::Base.smtp_settings = {
-        :address              => "smtp.mailgun.com",
-        :port                 => 587,
-        :user_name            => ENV["MAILGUN_USERNAME"],
-        :password             => ENV['MAILGUN_PASSWORD'],
-        :authentication       => "plain",
-        :enable_starttls_auto => true
-       }
+ # require 'tlsmail'
+  #Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+  #ActionMailer::Base.delivery_method = :smtp
+  #config.action_mailer.perform_deliveries = true
+  #config.action_mailer.default :charset => "utf-8"
+  #ActionMailer::Base.smtp_settings = {
+   # :address              => "smtp.mailgun.com",
+    #:port                 => 587,
+    #:user_name            => ENV["MAILGUN_USERNAME"],
+    #:password             => ENV['MAILGUN_PASSWORD'],
+    #:authentication       => "plain",
+    #:enable_starttls_auto => true
+  #}
 end

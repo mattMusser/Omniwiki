@@ -33,7 +33,7 @@ gem 'fuubar'
 # Use Devise for authentication
 gem 'devise'
 
-gem 'tlsmail'
+#gem 'tlsmail'
 
 # Use mail gun to send emails
 gem 'mailgun_rails'
