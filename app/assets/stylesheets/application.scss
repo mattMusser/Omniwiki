@@ -1,6 +1,5 @@
 @import "bootstrap";
-
-$bg-primary = "red";
+@import "bootstrap/variables";
 
 .jumbotron {
   background-color: $bg-primary;
