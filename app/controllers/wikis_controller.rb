@@ -1,13 +1,10 @@
 class WikisController < ApplicationController
-  def index
-    @wikis = Wiki.all
-  end
-
   def show
     @wiki = Wiki.find(params[:id])
   end
 
   def new
+    @topic = Topic.find(params[:topic_id])
     @wiki = Wiki.new
   end
 
@@ -16,9 +13,11 @@ class WikisController < ApplicationController
     @wiki = @topic.wikis.build(wiki_params)
     @wiki.user = current_user
 
+    @wiki.topic= @topic
+
     if @wiki.save
       flash[:notice] = "Your entry was saved."
-      redirect_to [@topic, @post]
+      redirect_to [@topic, @wiki]
     else
       flash.now[:alert] = "There was a problem saving your entry. Please try again."
       render :new

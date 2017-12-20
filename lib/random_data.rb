@@ -25,4 +25,20 @@ module RandomData
 		letters.shuffle!
 		letters[0,rand(3..8)].join
 	end
+
+	def self.random_wiki_title
+		title_strings = []
+		rand(1..5).times do
+			title_strings << random_word
+		end
+		title_sentence = title_strings.join(" ").capitalize
+	end
+
+	def self.random_topic
+		topic_strings = []
+		rand(1..2).times do
+			topic_strings << random_word
+		end
+		topic_sentence = topic_strings.join(" ").capitalize
+	end
 end

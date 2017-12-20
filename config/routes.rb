@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     resources :wikis, except: [:index]
   end
 
-  resources :wikis, only: []
+  resources :users, only: [:new, :create, :show]
+  resources :sessions, only: [:new, :create, :destroy]
 
   devise_for :users
   get 'about' => 'welcome#about'

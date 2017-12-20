@@ -11,20 +11,21 @@ require 'random_data'
 
 # Create Topics
 15.times do
-	Topic.create!(
-		name: 			 RandomData.random_sentence,
+	topic = Topic.create!(
+		name: 			 RandomData.random_topic,
 		description: RandomData.random_paragraph
 	)
 end
+topics = Topic.all
 
 # Create Wikis
 50.times do
 		wiki = Wiki.create!(
-			title: RandomData.random_sentence,
+			topic: topics.sample,
+			title: RandomData.random_wiki_title,
 			body:	 RandomData.random_paragraph
 		)
 end
-
 wikis = Wiki.all
 
 puts "Seed finished"

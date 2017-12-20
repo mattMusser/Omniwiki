@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :wikis
-  before_save { self.email = email.downcase if email.preset? }
+  before_save { self.email = email.downcase if email.present? }
 end
