@@ -1,2 +1,15 @@
-<h1>Topics#show</h1>
-<p>Find me in app/views/topics/show.html.erb</p>
+<h1><%= @topic.name %></h1>
+<div class="row">
+	<div class="col-md-8">
+		<p class="lead"><%= @topic.description %></p>
+		<% @topic.posts.each do |post| %>
+			<div class="media">
+				<div class="media-body">
+					<h4 class="media-heading">
+						<%= link_to post.title, topic_wiki_path(@topic, wiki) %>
+					</h4>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

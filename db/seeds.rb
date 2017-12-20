@@ -1,14 +1,13 @@
 require 'random_data'
 
 # Create Users
-# Create Users
-5.times do
-	User.create!(
-		email: 			RandomData.random_email,
-		password: 	RandomData.random_sentence
-	)
-end
-users = User.all
+#5.times do
+	#User.create!(
+	#	email: 			RandomData.random_email,
+	#	password: 	RandomData.random_sentence
+	#)
+#end
+#users = User.all
 
 # Create Topics
 15.times do

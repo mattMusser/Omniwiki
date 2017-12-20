@@ -1,19 +1,9 @@
 Rails.application.routes.draw do
-  get 'topics/index'
+  resources :topics do
+    resources :wikis, except: [:index]
+  end
 
-  get 'topics/show'
-
-  get 'topics/new'
-
-  get 'topics/create'
-
-  get 'topics/edit'
-
-  get 'topics/update'
-
-  get 'topics/destroy'
-
-  resources :wikis
+  resources :wikis, only: []
 
   devise_for :users
   get 'about' => 'welcome#about'
