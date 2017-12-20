@@ -21,7 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use Bootstrap 4
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 # Use Sprockets Rails
-gem 'sprockets-rails', '~> 2.3.2', :require => 'sprockets/railtie'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Bootstrap Javascript depends on jQuery
 gem 'jquery-rails'
 
