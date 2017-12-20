@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'welcome/index'
+  resources :topics do
+    resources :wikis, except: [:index]
+  end
 
-  get 'welcome/about'
+  resources :users, only: [:new, :create, :show]
+  resources :sessions, only: [:new, :create, :destroy]
+
+  devise_for :users
+  get 'about' => 'welcome#about'
 
   root 'welcome#index'
 end

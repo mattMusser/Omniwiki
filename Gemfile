@@ -25,7 +25,7 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Bootstrap Javascript depends on jQuery
 gem 'jquery-rails'
 
-#Used to access font-awesome fonts
+# Used to access font-awesome fonts
 gem 'font-awesome-rails'
 # Used to format Rspec
 gem 'fuubar'
@@ -33,10 +33,13 @@ gem 'fuubar'
 # Use Devise for authentication
 gem 'devise'
 
-gem 'tlsmail'
+#gem 'tlsmail'
 
 # Use mail gun to send emails
 gem 'mailgun_rails'
+
+# Use figaro for to store environment variables
+gem 'figaro', '~> 1.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

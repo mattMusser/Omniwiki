@@ -18,6 +18,22 @@
 @import "bootstrap";
 
 .jumbotron {
-	background-color: $body-bg;
+	background-color: $gray-300;
 }
 
+//$theme-colors: map-merge(("primary": $primary), ("secondary": $secondary));
+/*$colors: map-merge((
+  "blue":       $blue,
+  "indigo":     $indigo,
+  "purple":     $purple,
+  "pink":       $pink,
+  "red":        $red,
+  "orange":     $orange,
+  "yellow":     $yellow,
+  "green":      $green,
+  "teal":       $teal,
+  "cyan":       $cyan,
+  "white":      $white,
+  "gray":       $gray-600,
+  "gray-dark":  $gray-800
+), $colors);*/
