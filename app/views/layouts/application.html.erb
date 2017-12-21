@@ -12,7 +12,7 @@
     <div class="container">
       <ul class="nav nav-tabs">
         <li class="nav-item"><%= link_to "Home", root_path, class: 'nav-link' %></li>
-        <li class="nav-item"><%= link_to "Topics", topics_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to "Categories", topics_path, class: 'nav-link' %></li>
         <li class="nav-item"><%= link_to "About", about_path, class: 'nav-link' %></li>
         <% if user_signed_in? %>
          <p class="float-right">Signed in as: <strong><%= current_user.email %></strong> |</p>
