@@ -1,36 +1,33 @@
 require 'random_data'
 
-# Create Users
-#5.times do
-	#User.create!(
-	#	email: 			RandomData.random_email,
-	#	password: 	RandomData.random_sentence
-	#)
-#end
-#users = User.all
-
-# Create Topics
+# Create Topics/Categories
 15.times do
 	topic = Topic.create!(
-		name: 			 RandomData.random_topic,
-		description: RandomData.random_paragraph
+		name: 			 Faker::StarWars.character
 	)
 end
 topics = Topic.all
 
-# Create Wikis
-50.times do
-		wiki = Wiki.create!(
-			topic: topics.sample,
-			title: RandomData.random_wiki_title,
-			body:	 RandomData.random_paragraph
-		)
+# Create Users
+5.times do
+	user = User.create!(
+		email:								Faker::Internet.email,
+		password: 						Faker::Internet.password(8)
+	)
 end
-wikis = Wiki.all
+
+# Create wikis
+50.times do
+	wiki = Wiki.create!(
+		topic: topics.sample,
+		title: Faker::StarWars.planet,
+		body:	 Faker::Lorem.paragraphs(10, true)
+	)
+end
+wikis= Wiki.all
 
 puts "Seed finished"
 puts "-.-.-.-.-.-.-"
-puts "#{Topic.count} total topics"
+puts "#{Topic.count} total categories"
 puts "#{Wiki.count} total wikis"
-
-
+puts "#{User.count} total users"
