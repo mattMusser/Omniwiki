@@ -1,5 +1,3 @@
-require 'random_data'
-
 # Create Topics/Categories
 15.times do
 	topic = Topic.create!(
@@ -20,8 +18,9 @@ end
 50.times do
 	wiki = Wiki.create!(
 		topic: topics.sample,
+		quote: Faker::StarWars.quote,
 		title: Faker::StarWars.planet,
-		body:	 Faker::Lorem.paragraphs(10, true)
+		body:	 Faker::Lorem.paragraphs(10)
 	)
 end
 wikis= Wiki.all

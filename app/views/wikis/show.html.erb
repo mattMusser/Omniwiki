@@ -1,5 +1,16 @@
 <div>
 	<h1><%= @wiki.title %></h1>
+	<hr>
+	<!--</br>-->
+	<div class="card text-center text-white bg-info mb-3" style="width: 30rem;">
+		<div class="card-body">
+			<blockquote class="blockquote mb-0">
+      <p><%= @wiki.quote %></p>
+      <footer class="blockquote-footer text-dark">Someone from <cite title="Source Title">Star Wars</cite></footer>
+    </blockquote>
+		</div>
+	</div>
+	</br>
 </div>
 <div class="row">
 	<div class="col-md-8">

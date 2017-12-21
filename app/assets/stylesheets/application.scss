@@ -21,6 +21,10 @@
 	background-color: $gray-300;
 }
 
+hr {
+  border-top: 1px solid darken($black, 8%);
+}
+
 //$theme-colors: map-merge(("primary": $primary), ("secondary": $secondary));
 /*$colors: map-merge((
   "blue":       $blue,

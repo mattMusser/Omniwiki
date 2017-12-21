@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171220184617) do
 
   create_table "wikis", force: :cascade do |t|
     t.string "title"
+    t.string "quote"
     t.text "body"
     t.boolean "private"
     t.integer "user_id"
