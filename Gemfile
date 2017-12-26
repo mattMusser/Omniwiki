@@ -33,8 +33,6 @@ gem 'fuubar'
 # Use Devise for authentication
 gem 'devise'
 
-#gem 'tlsmail'
-
 # Use mail gun to send emails
 gem 'mailgun_rails'
 
@@ -42,10 +40,13 @@ gem 'mailgun_rails'
 gem 'figaro', '~> 1.0'
 
 # Use Pundit for authorization
-gem "pundit"
+gem 'pundit', '~> 1.0'
 
 # User Faker to generate seed data
-gem "faker"
+gem 'faker', '~> 1.8'
+
+# Use Stripe to handle payments
+gem 'stripe', '~> 3.9'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
