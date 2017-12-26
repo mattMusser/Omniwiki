@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.4.2"
+ruby "2.4.3"
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -23,30 +23,30 @@ gem 'bootstrap', '~> 4.0.0.beta2.1'
 # Use Sprockets Rails
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Bootstrap Javascript depends on jQuery
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3.1'
 
 # Used to access font-awesome fonts
-gem 'font-awesome-rails'
+gem 'font-awesome-rails', '~> 4.7.0'
 # Used to format Rspec
-gem 'fuubar'
+gem 'fuubar', '~> 2.2.0'
 
 # Use Devise for authentication
-gem 'devise'
+gem 'devise', '~> 4.3.0'
 
 # Use mail gun to send emails
-gem 'mailgun_rails'
+#gem 'mailgun_rails'
 
 # Use figaro for to store environment variables
-gem 'figaro', '~> 1.0'
+gem 'figaro', '~> 1.1.1'
 
 # Use Pundit for authorization
-gem 'pundit', '~> 1.0'
+gem 'pundit', '~> 1.1.0'
 
 # User Faker to generate seed data
-gem 'faker', '~> 1.8'
+gem 'faker', '~> 1.8.7'
 
 # Use Stripe to handle payments
-gem 'stripe', '~> 3.9'
+gem 'stripe', '~> 3.9.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -64,16 +64,16 @@ gem 'jbuilder', '~> 2.5'
 
 group :production do
   #Use pg as the production database for Active Record
-  gem 'pg', '~> 0.20.0'
+  gem 'pg', '~> 0.21.0'
 end
 
 group :development do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.13'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '~> 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
@@ -83,8 +83,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '3.6.1'
-  gem 'rails-controller-testing'
-  gem 'shoulda'
-  gem 'foreman'
+  gem 'rails-controller-testing', '~> 1.0.2'
+  gem 'shoulda', '~> 3.5.0'
+  gem 'foreman', '~> 0.84.0'
 end
-

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'charges_controller/create'
+
   resources :topics do
     resources :wikis, except: [:index]
   end
