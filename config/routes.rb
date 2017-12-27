@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :wikis, except: [:index]
   end
 
+  resources :wikis, only: [:index]
+
   resources :charges, only: [:new, :create]
 
   devise_for :users

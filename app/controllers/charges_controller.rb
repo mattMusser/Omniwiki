@@ -1,24 +1,32 @@
 class ChargesController < ApplicationController
   def create
     # Amount in cents
-    @amount = 5000
+    @amount = 1500
 
     # Creates a Stripe Customer object, for associating with the charge.
     customer = Stripe::Customer.create(
-      email: current_user.email,
-      card:  params[:stripeToken]
+      :email =>  params[:stripeEmail],
+      :card  =>  params[:stripeToken]
     )
 
     # Where the real magic happens
     charge = Stripe::Charge.create(
-      customer:    customer.id, # Note -- thise is NOT the user_id in this app.
-      amount:      @amount,
-      description: "Stripe customer",
-      currency:    'usd'
+      :customer    =>    customer.id, # Note -- thise is NOT the user_id in this app.
+      :amount      =>    @amount,
+      :description =>    "Stripe customer",
+      :currency    =>    "usd"
     )
 
     flash[:success] = "Thanks for the upgrading, #{current_user.email}!"
+    current_user.update_attribute(:role, 'premium')
     redirect_to edit_user_registration_path
+
+    Stripe::Subscription.create(
+      :customer => customer.id,
+      :plan     => "premium"
+    )
+
+    current.user.set_attribute(:role, 'premium')
 
     # Stripe will send back CardErrors, with friendly messages.
     # when something goes wrong.
@@ -28,6 +36,10 @@ class ChargesController < ApplicationController
       redirect_to new_charge_path
   end
 
+  def downgrade
+
+  end
+
   def new
     @stripe_btn_data = {
       key:         "#{ Rails.configuration.stripe[:publishable_key] }",
@@ -35,4 +47,6 @@ class ChargesController < ApplicationController
       amount:      @amount
     }
   end
+
+
 end
