@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ChargesControllerController, type: :controller do
+RSpec.describe ChargesController, type: :controller do
 
   describe "GET #create" do
     it "returns http success" do
