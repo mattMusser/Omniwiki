@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'charges/create'
 
   resources :topics do
     resources :wikis, except: [:index]
