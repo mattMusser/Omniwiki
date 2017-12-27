@@ -1,15 +1,13 @@
 <h1>Every Wiki</h1>
+<hr>
 <div class="row">
 	<div class="col-md-8">
 		<% @wikis.each do |wiki| %>
 			<div class="media">
 				<div class="media-body">
-					<div class="media-heading">
+					<h4 class="media-heading">
 						<p><%= link_to wiki.title, wiki_path(wiki.id) %></p>
-					</div>
-					<small>
-						<%= wiki.description %>
-					</small>
+					</h4>
 				</div>
 			</div>
 		<% end %>
