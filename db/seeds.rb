@@ -27,8 +27,7 @@ end
 1.times do
 	User.create!(
 		email:			'user@omnipedia.com',
-		password:		'password',
-		role:       1
+		password:		'password'
 	)
 end
 users = User.all

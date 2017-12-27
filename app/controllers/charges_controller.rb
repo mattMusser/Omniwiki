@@ -35,11 +35,7 @@ class ChargesController < ApplicationController
       flash[:alert] = e.message
       redirect_to new_charge_path
   end
-
-  def downgrade
-
-  end
-
+  
   def new
     @stripe_btn_data = {
       key:         "#{ Rails.configuration.stripe[:publishable_key] }",
