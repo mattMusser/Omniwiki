@@ -1,4 +1,6 @@
 class ChargesController < ApplicationController
+  require "json"
+  
   def create
     # Amount in cents
     @amount = 1500
@@ -10,7 +12,7 @@ class ChargesController < ApplicationController
     )
 
     # Where the real magic happens
-    charge = Stripe::Charge.create(
+    @stripe_charge = Stripe::Charge.create(
       :customer    =>    customer.id, # Note -- thise is NOT the user_id in this app.
       :amount      =>    @amount,
       :description =>    "Stripe customer",
@@ -21,12 +23,25 @@ class ChargesController < ApplicationController
     current_user.update_attribute(:role, 'premium')
     redirect_to edit_user_registration_path
 
-    Stripe::Subscription.create(
-      :customer => customer.id,
-      :plan     => "premium"
+
+    plan = Stripe::Plan.create(
+      :name => "Premium",
+      :id => "premium",
+      :interval => "month",
+      :currency => "usd",
+      :amount => 1500
     )
 
-    current.user.set_attribute(:role, 'premium')
+    Stripe::Subscription.create(
+      :customer => customer.id,
+      :items => [
+        {
+          :plan => "premium",
+        },
+      ],
+    )
+
+    current_user.set_attribute(:role, 'premium')
 
     # Stripe will send back CardErrors, with friendly messages.
     # when something goes wrong.
@@ -35,7 +50,7 @@ class ChargesController < ApplicationController
       flash[:alert] = e.message
       redirect_to new_charge_path
   end
-  
+
   def new
     @stripe_btn_data = {
       key:         "#{ Rails.configuration.stripe[:publishable_key] }",
@@ -44,5 +59,7 @@ class ChargesController < ApplicationController
     }
   end
 
-
+  def id
+    params[:charge_id] ||= @stripe_charge
+  end
 end

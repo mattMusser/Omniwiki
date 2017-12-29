@@ -15,29 +15,19 @@
  */
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+
+@import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap/theme";
 
 .jumbotron {
-	background-color: $cyan;
+	background-color: $brand-primary;
 }
 
 hr {
-  border-top: 1px solid darken($black, 8%);
+  $hr-border: 1px solid darken($gray-darker, 8%);
 }
 
-//$theme-colors: map-merge(("primary": $primary), ("secondary": $secondary));
-/*$colors: map-merge((
-  "blue":       $blue,
-  "indigo":     $indigo,
-  "purple":     $purple,
-  "pink":       $pink,
-  "red":        $red,
-  "orange":     $orange,
-  "yellow":     $yellow,
-  "green":      $green,
-  "teal":       $teal,
-  "cyan":       $cyan,
-  "white":      $white,
-  "gray":       $gray-600,
-  "gray-dark":  $gray-800
-), $colors);*/
+.login {
+  margin: 1rem;
+}

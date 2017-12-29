@@ -12,14 +12,14 @@ gem 'rails', '~> 5.1.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# Use Bootstrap 4
-gem 'bootstrap', '~> 4.0.0.beta2.1'
+# Use Bootstrap 3
+gem 'bootstrap-sass', '~> 3.3.7'
 # Use Sprockets Rails
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Bootstrap Javascript depends on jQuery
@@ -47,6 +47,9 @@ gem 'faker', '~> 1.8.7'
 
 # Use Stripe to handle payments
 gem 'stripe', '~> 3.9.0'
+
+#JSON
+gem 'json', '~> 1.8', '>= 1.8.3'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
