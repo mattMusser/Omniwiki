@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   end
 
   resources :wikis
-
   resources :charges
+
   resources :downgrade
 
   devise_for :users

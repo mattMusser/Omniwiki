@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
   require "json"
-  
+
   def create
     # Amount in cents
     @amount = 1500
@@ -19,29 +19,33 @@ class ChargesController < ApplicationController
       :currency    =>    "usd"
     )
 
-    flash[:success] = "Thanks for the upgrading, #{current_user.email}!"
+    p "stripe_charge: #{@stripe_charge}"
+    @h = JSON.parse @stripe_charge.to_s
+    p "h: #{@h}"
+    @ch_id = @h["id"]
+    p "ch_id: #{@ch_id}"
+
+    flash[:success] = "Thanks for upgrading your account, #{current_user.email}!"
     current_user.update_attribute(:role, 'premium')
     redirect_to edit_user_registration_path
 
+    @plan = Stripe::Plan.retrieve("premium")
+    unless @plan
+      plan = Stripe::Plan.create(
+        :name => "Premium",
+        :id => "premium",
+        :interval => "month",
+        :currency => "usd",
+        :amount => 1500
+      )
 
-    plan = Stripe::Plan.create(
-      :name => "Premium",
-      :id => "premium",
-      :interval => "month",
-      :currency => "usd",
-      :amount => 1500
-    )
+      @subscription = Stripe::Subcription.create(
+        :customer => customer.id,
+        :plan => "premium",
+      )
 
-    Stripe::Subscription.create(
-      :customer => customer.id,
-      :items => [
-        {
-          :plan => "premium",
-        },
-      ],
-    )
-
-    current_user.set_attribute(:role, 'premium')
+      current_user.set_attribute(:role, 'premium')
+    end
 
     # Stripe will send back CardErrors, with friendly messages.
     # when something goes wrong.
@@ -59,7 +63,15 @@ class ChargesController < ApplicationController
     }
   end
 
-  def id
-    params[:charge_id] ||= @stripe_charge
+  def downgrade
+    current_user.update_attribute(:role, 'standard')
+
+    @ch = Stripe::Charge.retrieve( charge: @ch_id)
+    re = Stripe::Refund.create( charge: @ch )
+    puts "@ch_id: #{@ch_id}"
+    puts "@ch: #{@ch}"
+
+    flash[:notice] = "Your account has been downgraded to a standard account. Your private wikis are now public. You will recieve a $15.00 refund."
+    redirect_to root_path
   end
 end
