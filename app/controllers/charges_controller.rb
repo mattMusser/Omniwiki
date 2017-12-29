@@ -63,13 +63,16 @@ class ChargesController < ApplicationController
     }
   end
 
-  def downgrade
-    current_user.update_attribute(:role, 'standard')
+  def dpwngrade
+    #current_user.update_attribute(:role, 'standard')
 
     @ch = Stripe::Charge.retrieve( charge: @ch_id)
-    re = Stripe::Refund.create( charge: @ch )
+    #re = Stripe::Refund.create( charge: @ch )
     puts "@ch_id: #{@ch_id}"
     puts "@ch: #{@ch}"
+
+    #current_user.set_attribute(:role, 'standard')
+    current_user.update_attribute(:role, 'standard')
 
     flash[:notice] = "Your account has been downgraded to a standard account. Your private wikis are now public. You will recieve a $15.00 refund."
     redirect_to root_path
