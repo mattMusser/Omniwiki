@@ -33,9 +33,6 @@ gem 'fuubar', '~> 2.2.0'
 # Use Devise for authentication
 gem 'devise', '~> 4.3.0'
 
-# Use mail gun to send emails
-#gem 'mailgun_rails'
-
 # Use figaro for to store environment variables
 gem 'figaro', '~> 1.1.1'
 
@@ -48,8 +45,11 @@ gem 'faker', '~> 1.8.7'
 # Use Stripe to handle payments
 gem 'stripe', '~> 3.9.0'
 
-#JSON
+# JSON
 gem 'json', '~> 1.8', '>= 1.8.3'
+
+# Use redcarpet for markdown
+gem 'redcarpet'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
