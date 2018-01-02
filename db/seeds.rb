@@ -1,11 +1,3 @@
-# Create Topics/Categories
-15.times do
-	topic = Topic.create!(
-		name: 			 Faker::StarWars.character
-	)
-end
-topics = Topic.all
-
 # Create Users
 5.times do
 	user = User.create!(
@@ -37,7 +29,7 @@ end
 	User.create!(
 		email:								 'user@omnipedia.com',
 		password:							 'password',
-		role: 								 'standard'
+		role:									 'standard'
 	)
 end
 users = User.all
@@ -46,7 +38,6 @@ users = User.all
 50.times do
 	wiki = Wiki.create!(
 		user:  			users.sample,
-		topic: 			topics.sample,
 		quote: 			Faker::StarWars.quote,
 		title: 			Faker::StarWars.planet,
 		body:	 			Faker::Lorem.paragraphs(10),
@@ -57,6 +48,5 @@ wikis= Wiki.all
 
 puts "Seed finished"
 puts "-.-.-.-.-.-.-"
-puts "#{Topic.count} total categories"
 puts "#{Wiki.count} total wikis"
 puts "#{User.count} total users"

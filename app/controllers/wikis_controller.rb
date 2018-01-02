@@ -1,9 +1,9 @@
 class WikisController < ApplicationController
   def index
     if current_user.standard?
-      @wikis = Wiki.all
+      @wikis = Wiki.where(private: false)
     else
-      @wikis - Wiki.where(private: true)
+      @wikis = Wiki.all
     end
   end
 
@@ -12,20 +12,15 @@ class WikisController < ApplicationController
   end
 
   def new
-    @topic = Topic.find(params[:topic_id])
     @wiki = Wiki.new
   end
 
   def create
-    @topic = Topic.find(params[:topic_id])
-    @wiki = @topic.wikis.build(wiki_params)
-    @wiki.user = current_user
-
-    @wiki.topic= @topic
+    @wiki = current_user.wikis.new(wiki_params)
 
     if @wiki.save
       flash[:notice] = "Your entry was saved."
-      redirect_to [@topic, @wiki]
+      redirect_to [@wiki]
     else
       flash.now[:alert] = "There was a problem saving your entry. Please try again."
       render :new
@@ -54,7 +49,7 @@ class WikisController < ApplicationController
 
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
-      redirect_to @wiki.topic
+      redirect_to @wikis
     else
       flash[:alert] = "There was an error deleting your entry."
       render :show

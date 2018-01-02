@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :topics do
-    resources :wikis, except: [:index]
-  end
-
   resources :wikis
   resources :charges
 
