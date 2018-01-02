@@ -17,17 +17,27 @@ end
 # Create admin user
 1.times do
 	User.create!(
-		email:			'admin@omnipedia.com',
-		password:		'password',
-		role:				2
+		email:								 'admin@omnipedia.com',
+		password:							 'password',
+		role:									 'admin'
+	)
+end
+
+# Create premium user
+1.times do
+	User.create!(
+		email: 								 'premium@omnipedia.com',
+		password: 						 'password',
+		role:									 'premium'
 	)
 end
 
 # Create standard user
 1.times do
 	User.create!(
-		email:			'user@omnipedia.com',
-		password:		'password'
+		email:								 'user@omnipedia.com',
+		password:							 'password',
+		role: 								 'standard'
 	)
 end
 users = User.all
@@ -39,7 +49,8 @@ users = User.all
 		topic: 			topics.sample,
 		quote: 			Faker::StarWars.quote,
 		title: 			Faker::StarWars.planet,
-		body:	 			Faker::Lorem.paragraphs(10)
+		body:	 			Faker::Lorem.paragraphs(10),
+		private:		true
 	)
 end
 wikis= Wiki.all
