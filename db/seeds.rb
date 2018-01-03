@@ -4,6 +4,8 @@
 		email:			Faker::Internet.email,
 		password: 	Faker::Internet.password(8)
 	)
+	user.skip_confirmation!
+	user.save!
 end
 
 # Create admin user
