@@ -58,7 +58,7 @@ class ChargesController < ApplicationController
   def new
     @stripe_btn_data = {
       key:         "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "Omnipedia Membership - #{current_user.email}",
+      description: "Omniwiki Membership - #{current_user.email}",
       amount:      @amount
     }
   end

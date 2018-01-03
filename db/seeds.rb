@@ -9,7 +9,7 @@ end
 # Create admin user
 1.times do
 	User.create!(
-		email:								 'admin@omnipedia.com',
+		email:								 'admin@omniwiki.com',
 		password:							 'password',
 		role:									 'admin'
 	)
@@ -18,7 +18,7 @@ end
 # Create premium user
 1.times do
 	User.create!(
-		email: 								 'premium@omnipedia.com',
+		email: 								 'premium@omniwiki.com',
 		password: 						 'password',
 		role:									 'premium'
 	)
@@ -27,7 +27,7 @@ end
 # Create standard user
 1.times do
 	User.create!(
-		email:								 'user@omnipedia.com',
+		email:								 'user@omniwiki.com',
 		password:							 'password',
 		role:									 'standard'
 	)
