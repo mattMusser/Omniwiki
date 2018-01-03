@@ -63,7 +63,7 @@ class ChargesController < ApplicationController
     }
   end
 
-  def dpwngrade
+  def downgrade
     #current_user.update_attribute(:role, 'standard')
 
     @ch = Stripe::Charge.retrieve( charge: @ch_id)
