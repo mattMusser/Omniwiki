@@ -47,7 +47,7 @@ class WikisController < ApplicationController
 
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
-      redirect_to @wikis
+      redirect_to @wiki
     else
       flash[:alert] = "There was an error deleting your entry."
       render :show

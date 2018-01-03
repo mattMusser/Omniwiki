@@ -7,31 +7,31 @@
 end
 
 # Create admin user
-1.times do
-	User.create!(
-		email:								 'admin@omniwiki.com',
-		password:							 'password',
-		role:									 'admin'
-	)
-end
+User.create!(
+	email:								 'admin@omniwiki.com',
+	password:							 'password',
+	role:									 'admin'
+)
+user.skip_confirmation!
+user.save!
 
 # Create premium user
-1.times do
-	User.create!(
-		email: 								 'premium@omniwiki.com',
-		password: 						 'password',
-		role:									 'premium'
-	)
-end
+User.create!(
+	email: 								 'premium@omniwiki.com',
+	password: 						 'password',
+	role:									 'premium'
+)
+user.skip_confirmation!
+user.save!
 
 # Create standard user
-1.times do
-	User.create!(
-		email:								 'user@omniwiki.com',
-		password:							 'password',
-		role:									 'standard'
-	)
-end
+User.create!(
+	email:								 'user@omniwiki.com',
+	password:							 'password',
+	role:									 'standard'
+)
+user.skip_confirmation!
+user.save!
 users = User.all
 
 # Create wikis

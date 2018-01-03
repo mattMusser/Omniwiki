@@ -51,6 +51,9 @@ gem 'json', '~> 1.8', '>= 1.8.3'
 # Use redcarpet for markdown
 gem 'redcarpet'
 
+# Use Sunspot for searching
+gem 'sunspot_rails', '~> 2.2.0'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -78,6 +81,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'sunspot_solr'
 end
 
 group :development do
