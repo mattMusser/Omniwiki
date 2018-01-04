@@ -26,8 +26,11 @@ class CollaboratorController < ApplicationController
 
     if @collaborator.destroy
       flash[:notice] = "Collaborator removed"
-    els
+    else
+      flash[:alert] = "Error occured. Please try again."
     end
+
+    redirect_to :back
   end
 
   private

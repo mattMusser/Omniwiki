@@ -1,15 +1,17 @@
 class WikisController < ApplicationController
 
   def index
-    @wikis = policy_scope(Wiki)
+    @policy_wikis = policy_scope(Wiki)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
 
   def create
@@ -27,6 +29,9 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.all
+    @get_wikis = Collaborator.where(wiki_id: @wiki.id)
+    @collaborators = User.where(id: @get_wikis.pluck(:user_id)
   end
 
   def update
