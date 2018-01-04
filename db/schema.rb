@@ -10,12 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102212933) do
-
-  create_table "collaborators", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20180103201039) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -48,6 +43,7 @@ ActiveRecord::Schema.define(version: 20180102212933) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "sources"
     t.index ["user_id"], name: "index_wikis_on_user_id"
   end
 

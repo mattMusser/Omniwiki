@@ -1,33 +1,27 @@
 class ChargesController < ApplicationController
-  require "json"
 
   def create
     # Amount in cents
     @amount = 1500
 
     # Creates a Stripe Customer object, for associating with the charge.
-    customer = Stripe::Customer.create(
+    @customer = Stripe::Customer.create(
       :email =>  params[:stripeEmail],
       :card  =>  params[:stripeToken]
     )
 
     # Where the real magic happens
     @stripe_charge = Stripe::Charge.create(
-      :customer    =>    customer.id, # Note -- thise is NOT the user_id in this app.
+      :customer    =>    @customer.id, # Note -- thise is NOT the user_id in this app.
       :amount      =>    @amount,
       :description =>    "Stripe customer",
       :currency    =>    "usd"
     )
 
-    p "stripe_charge: #{@stripe_charge}"
-    @h = JSON.parse @stripe_charge.to_s
-    p "h: #{@h}"
-    @ch_id = @h["id"]
-    p "ch_id: #{@ch_id}"
-
-    flash[:success] = "Thanks for upgrading your account, #{current_user.email}!"
-    current_user.update_attribute(:role, 'premium')
+    current_user.premium!
+    flash[:notice] = "Thanks for upgrading to a premium account, #{current_user.email}!"
     redirect_to edit_user_registration_path
+
 
     @plan = Stripe::Plan.retrieve("premium")
     unless @plan
@@ -44,7 +38,7 @@ class ChargesController < ApplicationController
         :plan => "premium",
       )
 
-      current_user.set_attribute(:role, 'premium')
+      #redirect_to root_path
     end
 
     # Stripe will send back CardErrors, with friendly messages.
@@ -63,16 +57,8 @@ class ChargesController < ApplicationController
     }
   end
 
-  def downgrade
-    #current_user.update_attribute(:role, 'standard')
-
-    @ch = Stripe::Charge.retrieve( charge: @ch_id)
-    #re = Stripe::Refund.create( charge: @ch )
-    puts "@ch_id: #{@ch_id}"
-    puts "@ch: #{@ch}"
-
-    #current_user.set_attribute(:role, 'standard')
-    current_user.update_attribute(:role, 'standard')
+  def destroy
+    current_user.standard!
 
     flash[:notice] = "Your account has been downgraded to a standard account. Your private wikis are now public. You will recieve a $15.00 refund."
     redirect_to root_path

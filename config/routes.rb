@@ -4,11 +4,15 @@ Rails.application.routes.draw do
     resources :collaborators, only: [:create, :destroy]
   end
 
-  resources :charges
+  resources :wikis
 
-  resources :downgrade
+  resources :charges,  only: [:new, :create, :destroy]
+
+
+  get '/charges', to: 'charges#destroy', as: :downgrade
 
   devise_for :users
+
   get 'about' => 'welcome#about'
 
   root 'welcome#index'
