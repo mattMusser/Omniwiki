@@ -1,46 +1,45 @@
 # Create Users
-5.times do
-	user = User.create!(
-		email:			Faker::Internet.email,
-		password: 	Faker::Internet.password(8)
-	)
+20.times do
+	user = User.find_or_create_by!(email: Faker::Internet.email) do |user|
+		user.password = 					 'password'
+	end
+	user.skip_confirmation!
+	user.save!
 end
 
 # Create admin user
-1.times do
-	User.create!(
-		email:								 'admin@omnipedia.com',
-		password:							 'password',
-		role:									 'admin'
-	)
+admin = User.find_or_create_by!(email: 'admin@omniwiki.com') do |user|
+	user.password =							 'password'
+	user.role =									 'admin'
 end
+admin.skip_confirmation!
+admin.save!
 
 # Create premium user
-1.times do
-	User.create!(
-		email: 								 'premium@omnipedia.com',
-		password: 						 'password',
-		role:									 'premium'
-	)
+premium = User.find_or_create_by!(email: 'premium@omniwiki.com') do |user|
+	user.password = 						 'password'
+	user.role =								   'premium'
 end
+premium.skip_confirmation!
+premium.save!
 
 # Create standard user
-1.times do
-	User.create!(
-		email:								 'user@omnipedia.com',
-		password:							 'password',
-		role:									 'standard'
-	)
+standard = User.find_or_create_by!(email: 'user@omniwiki.com') do |user|
+	user.password =							 'password'
+	user.role =									 'standard'
 end
+standard.skip_confirmation!
+standard.save!
 users = User.all
+
 
 # Create wikis
 50.times do
 	wiki = Wiki.create!(
-		user:  			users.sample,
-		quote: 			Faker::StarWars.quote,
 		title: 			Faker::StarWars.planet,
-		body:	 			Faker::Lorem.paragraphs(10),
+		quote: 			Faker::StarWars.quote,
+		body:	 			Faker::Lorem.paragraph(100, false),
+		sources:    Faker::Internet.url,
 		private:		true
 	)
 end

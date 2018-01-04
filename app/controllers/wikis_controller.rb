@@ -50,7 +50,7 @@ class WikisController < ApplicationController
 
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
-      redirect_to @wikis
+      redirect_to @wiki
     else
       flash[:alert] = "There was an error deleting your entry."
       render :show
@@ -59,6 +59,6 @@ class WikisController < ApplicationController
 
   private
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private)
+    params.require(:wiki).permit(:title, :quote, :body, :sources, :private)
   end
 end

@@ -1,24 +1,27 @@
 <%= form_tag charges_path do %>
-	<h4>Upgrade your account!</h4>
-	<hr>
-	<p>Your current membership level is : <strong><%= current_user.role %></strong></p>
-		<% if current_user.role == 'standard' %>
-			<article>
-				<% if flash[:error].present? %>
-					<div id="error_explanation">
-						<p><%= flash[:error] %></p>
-					</div>
-				<% end %>
-				<label class="amount">
-					<span>Amount: <strong>$15.00</strong></span>
-				</label>
-			</article>
-			<script class='stripe-button' src="https://checkout.stripe.com/checkout.js"
-							data-key="<%= @stripe_btn_data[:key] %>"
-							data-amount="<%= @stripe_btn_data[:amount] %>"
-							data-description="<%= @stripe_btn_data[:description] %>" >
-			</script>
-		<% elsif current_user.role == 'premium' %>
-			<%= link_to "Downgrade Account", charges_path, method: :downgrade, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to go back to a standard account? You will have to pay again to upgrade your account to premium later.' } %>
-		<% end %>
+	<% if current_user.role == 'standard' %>
+		<h4>Upgrade your account!</h4>
+		<hr>
+		<p>Your current membership level is : <strong><%= current_user.role %></strong></p>
+		<article>
+			<% if flash[:error].present? %>
+				<div id="error_explanation">
+					<p><%= flash[:error] %></p>
+				</div>
+			<% end %>
+			<label class="amount">
+				<span>Amount: <strong>$15.00</strong></span>
+			</label>
+		</article>
+		<script class='stripe-button' src="https://checkout.stripe.com/checkout.js"
+						data-key="<%= @stripe_btn_data[:key] %>"
+						data-amount="<%= @stripe_btn_data[:amount] %>"
+						data-description="<%= @stripe_btn_data[:description] %>" >
+		</script>
+	<% elsif current_user.role == 'premium' %>
+		<h4>Downgrade your account</h4>
+		<hr>
+		<p>Your current membership level is : <strong><%= current_user.role %></strong></p>
+  	<%= render partial: 'downgrade' %>
+	<% end %>
 <% end %>

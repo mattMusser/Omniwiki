@@ -22,9 +22,13 @@
 			<%= f.label :body %>
 			<%= f.text_area :body, rows: 8, class: 'form-control', placeholder: 'Enter Your Wiki Entry Here' %>
 		<% end %>
+		<%= form_group_tag(wiki.errors[:sources]) do %>
+			<%= f.label :sources %>
+			<%= f.text_area :sources, rows: 5, class: 'form-control', placeholder: 'List Your Sources Here' %>
+		<% end %>
 		<% if current_user.admin? || current_user.premium? %>
-			<%= f.label :private, class: 'checkbox' do %>
-				<%= f.check_box :private %> Private wiki
+			<%= f.label :private do %>
+				<%= f.check_box :private, checked: @wiki.private %> Private wiki
 			<% end %>
 		<% end %>
 	</div>

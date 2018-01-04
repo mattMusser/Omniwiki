@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<blockquote class="blockquote mb-0">
 				<p><%= @wiki.quote %></p>
-				<footer class="blockquote-footer text-dark">Someone from famous</footer>
+				<footer class="blockquote-footer text-dark">Someone famous</footer>
     	</blockquote>
 		</div>
 	</div>
@@ -15,6 +15,12 @@
 <div class="row">
 	<div class="col-md-8">
 		<p><%= markdown(@wiki.body) %></p>
+		<br>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<p><%= @wiki.sources %></p>
+			</div>
+		</div>
 	</div>
 	<div class="col-md-4">
 		<%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
