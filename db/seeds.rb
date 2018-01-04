@@ -33,17 +33,30 @@ standard.save!
 users = User.all
 
 
-# Create wikis
-50.times do
-	wiki = Wiki.create!(
+# Private wikis
+5.times do
+	private_wiki = Wiki.create!(
 		title: 			Faker::StarWars.planet,
 		quote: 			Faker::StarWars.quote,
 		body:	 			Faker::Lorem.paragraph(100, false),
 		sources:    Faker::Internet.url,
-		private:		true
+		private:		true,
+		user:				users.sample
 	)
 end
-wikis= Wiki.all
+
+# Public Wikis
+5.times do
+	public_wiki = Wiki.create!(
+		title: 			Faker::StarWars.planet,
+		quote: 			Faker::StarWars.quote,
+		body:	 			Faker::Lorem.paragraph(100, false),
+		sources:    Faker::Internet.url,
+		private:		false,
+		user:				users.sample
+	)
+end
+
 
 puts "Seed finished"
 puts "-.-.-.-.-.-.-"
