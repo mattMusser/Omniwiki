@@ -6,7 +6,6 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
-    authorize @wiki
   end
 
   def new
@@ -31,7 +30,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @users = User.all
     @get_wikis = Collaborator.where(wiki_id: @wiki.id)
-    @collaborators = User.where(id: @get_wikis.pluck
+    @collaborators = User.where(id: @get_wikis.pluck(:user_id))
   end
 
   def update

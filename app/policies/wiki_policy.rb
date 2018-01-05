@@ -3,7 +3,7 @@ class WikiPolicy < ApplicationPolicy
 
 	def initialize(user, wiki)
     @user = user
-    @wiki = wiki
+		@wiki = wiki
   end
 
   def index?
@@ -11,7 +11,8 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => wiki.id).exists?
+		scope.where(id: wiki.id).exists?
+		puts "wiki.id: #{wiki.id}"
   end
 
   def create?
