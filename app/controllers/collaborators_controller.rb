@@ -1,4 +1,4 @@
-class CollaboratorController < ApplicationController
+class CollaboratorsController < ApplicationController
   before_action :get_current_wiki
 
   def index
@@ -6,14 +6,13 @@ class CollaboratorController < ApplicationController
   end
 
   def new
-    @collaborator = Collaborator.new
+    @collaborator = Collaborators.new
   end
 
   def create
-    @collaborator = Collaborator.new(wiki_id: @wiki_id, user_id: params[:user_id])
-
+    @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
     if @collaborator.save
-      flash[:notice] = "Collaborator add."
+      flash[:notice] = "Collaborator added."
     else
       flash[:alert] = "Error occured. Please try again."
     end
