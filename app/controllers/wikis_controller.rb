@@ -5,7 +5,7 @@ class WikisController < ApplicationController
   end
 
   def show
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.friendly.find(params[:id])
   end
 
   def new
@@ -27,7 +27,7 @@ class WikisController < ApplicationController
   end
 
   def edit
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.friendly.find(params[:id])
     @users = User.all
     @get_wikis = Collaborator.where(wiki_id: @wiki.id)
     @collaborators = User.where(id: @get_wikis.pluck(:user_id))

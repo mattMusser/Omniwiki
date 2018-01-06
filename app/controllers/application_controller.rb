@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  @user = User.friendly.find(params[:id])
   private
 
   def user_not_authorized

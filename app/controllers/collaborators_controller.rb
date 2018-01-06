@@ -10,7 +10,7 @@ class CollaboratorsController < ApplicationController
   end
 
   def create
-    @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
+    @collaborator = Collaborator.friendly.new(wiki_id: @wiki.id, user_id: params[:user_id])
     if @collaborator.save
       flash[:notice] = "Collaborator added."
     else
@@ -21,7 +21,7 @@ class CollaboratorsController < ApplicationController
   end
 
   def destroy
-    @collaborator = Collaborator.find(params[:id])
+    @collaborator = Collaborator.friendly.find(params[:id])
 
     if @collaborator.destroy
       flash[:notice] = "Collaborator removed"
