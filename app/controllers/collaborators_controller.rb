@@ -6,11 +6,12 @@ class CollaboratorsController < ApplicationController
   end
 
   def new
-    @collaborator = Collaborators.new
+    @collaborator = Collaborator.new
   end
 
   def create
     @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
+
     if @collaborator.save
       flash[:notice] = "Collaborator added."
     else
