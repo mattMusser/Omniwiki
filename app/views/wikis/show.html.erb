@@ -1,11 +1,13 @@
 <div>
 	<div class="page-header">
-		<h1><%= markdown(@wiki.title) %></h1>
+		<h1><%= markdown(@wiki.title) %>
+			<small class="text-muted"><%= @wiki.user.email %></small>
+		</h1>
 	</div>
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<blockquote class="blockquote mb-0">
-				<p><%= @wiki.quote %></p>
+				<p><%= markdown(@wiki.quote) %></p>
 				<footer class="blockquote-footer text-dark">Someone famous</footer>
     	</blockquote>
 		</div>
@@ -18,7 +20,7 @@
 		<br>
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<p><%= @wiki.sources %></p>
+				<p><%= markdown(@wiki.sources) %></p>
 			</div>
 		</div>
 	</div>
