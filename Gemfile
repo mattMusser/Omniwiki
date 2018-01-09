@@ -51,6 +51,10 @@ gem 'json', '~> 1.8', '>= 1.8.3'
 # Use redcarpet for markdown
 gem 'redcarpet'
 
+# Use Thinking Sphinx for search
+gem 'mysq12', '~> 0.3', :platform => :ruby
+gem 'thinking-sphinx', '~> 3.4.2'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
