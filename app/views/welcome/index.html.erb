@@ -10,6 +10,22 @@
 </div>
 <div class="container">
 	<div class="media-heading">
-		<h4><strong>Todays Random Wiki</strong></h4>
+		<h4><strong>A Random Wiki</strong></h4>
+	</div>
+	<hr>
+	<div class="wiki-title">
+		<h3><%= Faker::Hobbit.location %></h3>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<blockquote class="blockquote mb-0">
+				<p><%= Faker::BackToTheFuture.quote %></p>
+				<footer class="blockquote-footer text-dark">Someone famous</footer>
+    	</blockquote>
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-md-8">
+		<p><%= Faker::Lorem.paragraph([rand(50), rand(100)], false) %></p>
 	</div>
 </div>
