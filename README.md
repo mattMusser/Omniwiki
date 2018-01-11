@@ -1,21 +1,46 @@
 # Omniwiki
 
-## A wiki encyclopedia app made using Ruby on Rails that allows users to create public and private Markdown-based wikis.
+Omniwiki is a encyclopdia of wikis based on just about anything. Wikis can be created or edited by users who are knowledgeable about a certain topic. Any user can create and edit public wikis; however, premium users can create private wikis. Other users can be added to these private wikis and edit them as collaborators.
+ 
+## Why
 
-A project from the Rails Web Development track on [Bloc](https://www.bloc.io "Bloc")
+After the the creation of Wikipedia thousands of copycats sprung up dedicated to a single over-arching subject instead of dedicated to a wide range of subjects. Thats where Omniwiki comes in. Omniwiki strides to be better than Wikipedia but to be a better alternative where users can discover and create a wikis on any subject they choose.
 
-**User Stories**
----
+## How (Tech)
 
+Built on Ruby 5.1.4 using PostgresSQL and deployed on Heroku.
 
-1. User sign up
-2. User sign in and out
-3. Standard user: create, read, update, and delete public wikis
-4. Offer three user rolse: admin, standard, or premium
-5. Seed data with users and wikis
-6. Upgrade user account from free to paid plan
-7. Create private wikis
-8. Edit wikis using Markdown syntax
-9. Premium user: add and remove colloborators for private wikis
+#### Key Gems
 
+* Devise
+* Pundit
+* Faker
+* Figaro
+* pg (PostgresSQL)
+* Stripe
+* Redcarpet
+* Bootstrap 3.3.7
+
+## Getting Started
+
+### Prerequisites
+
+* Rails 5.1.4 ([Install](http://installrails.com/steps/choose_os))
+* PostgresSQL ([Install](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04))
+
+### Run locally
+
+1) Clone this repository and navigate to it within the terminal
+2) Install gems: bundle install
+3) Create local database: rake db:create
+4) Run Migrations: rake db:migrate
+5) Open the db/seeds.rb and edit the admin user to your own details
+6) Seed the database: rake db:seed
+7) Run the server: rails s
+8) View the project at localhost:3000
+9) Ctrl + C to shutdown the server
+
+## Who
+
+Created and maintained by [Matt Musser](http://www.github.com/mattMusser)
 
