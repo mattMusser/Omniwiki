@@ -1,14 +1,14 @@
 # Omniwiki
 
 Omniwiki is a encyclopdia of wikis based on just about anything. Wikis can be created or edited by users who are knowledgeable about a certain topic. Any user can create and edit public wikis; however, premium users can create private wikis. Other users can be added to these private wikis and edit them as collaborators.
- 
+
 ## Why
 
 After the the creation of Wikipedia thousands of copycats sprung up dedicated to a single over-arching subject instead of dedicated to a wide range of subjects. Thats where Omniwiki comes in. Omniwiki strides to be better than Wikipedia but to be a better alternative where users can discover and create a wikis on any subject they choose.
 
 ## How (Tech)
 
-Built on Ruby 5.1.4 using PostgresSQL and deployed on Heroku.
+Built on Rails 5.1.4 using PostgresSQL and deployed on Heroku.
 
 #### Key Gems
 
