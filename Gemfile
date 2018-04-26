@@ -51,6 +51,8 @@ gem 'json', '~> 1.8', '>= 1.8.3'
 # Use redcarpet for markdown
 gem 'redcarpet'
 
+#TODO: Add a search engine gem. i.e elasitc search
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
