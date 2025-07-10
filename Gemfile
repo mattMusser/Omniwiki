@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.4.3"
+ruby "3.1.0"
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -46,7 +46,7 @@ gem 'faker', '~> 1.8.7'
 gem 'stripe', '~> 3.9.0'
 
 # JSON
-gem 'json', '~> 1.8', '>= 1.8.3'
+gem 'json', '~> 2.6'
 
 # Use redcarpet for markdown
 gem 'redcarpet'
@@ -69,12 +69,12 @@ gem 'jbuilder', '~> 2.5'
 
 group :production do
   #Use pg as the production database for Active Record
-  gem 'pg', '~> 0.21.0'
+  gem 'pg', '~> 1.2'
 end
 
 group :development do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.3.13'
+  gem 'sqlite3', '~> 1.4'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
