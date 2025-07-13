@@ -27,12 +27,20 @@ end
 group :development do
   gem 'listen', '3.7.0'
   gem 'spring', '~> 4.0'
+<<<<<<< HEAD
   gem 'spring-watcher-listen', '2.0.2'
   gem 'web-console', '>= 4.0.0'
   gem 'sqlite3', '~> 1.6'
 end
 
 group :development, :test do
+=======
+  gem 'spring-watcher-listen', '~> 2.0'
+  gem 'listen', '~> 3.7'
+end
+
+group :test do
+>>>>>>> 42880c4 (updated gemfile and other necessary files)
   gem 'rspec-rails', '~> 6.0'
   gem 'rails-controller-testing', '~> 1.0.5'
   gem 'shoulda', '~> 4.0'

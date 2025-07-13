@@ -26,3 +26,15 @@
 Procfile
 # Ignore application configuration
 /config/application.yml
+
+# Bundler vendor directory
+/vendor/bundle/
+
+# Spring cache (if you re-enable spring later)
+/.spring/
+
+# OS and editor artifacts
+*.swp
+*.swo
+.DS_Store
+
