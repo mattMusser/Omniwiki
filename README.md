@@ -20,7 +20,7 @@ Deployed at https://omni-wiki.herokuapp.com
 
 ## Installation
 
-If you want to install PostEnvy locally, you need to make sure you have Ruby installed on your machine, and then fork and clone this repository. After you have cloned the repository locally, use bundler to install dependencies.
+If you want to install Omniwiki locally, you need to make sure you have Ruby installed on your machine, and then fork and clone this repository. After you have cloned the repository locally, use bundler to install dependencies.
 
 ```bash
 #if needed
