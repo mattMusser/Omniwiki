@@ -18,20 +18,18 @@ gem 'json', '~> 2.7'
 gem 'redcarpet'
 gem 'turbolinks', '~> 5.2'
 gem 'jbuilder', '~> 2.11'
+gem 'rake', '~> 13.0'
 
 group :production do
   gem 'pg', '~> 1.5'
 end
 
 group :development do
-  gem 'sqlite3', '~> 1.6'
-  gem 'web-console', '>= 4.0.0'
+  gem 'listen', '3.7.0'
   gem 'spring', '~> 4.0'
-  gem 'spring-watcher-listen', '~> 2.0'
-end
-
-group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring-watcher-listen', '2.0.2'
+  gem 'web-console', '>= 4.0.0'
+  gem 'sqlite3', '~> 1.6'
 end
 
 group :development, :test do
